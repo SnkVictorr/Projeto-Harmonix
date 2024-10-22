@@ -37,3 +37,7 @@
     @apply text-foreground antialiased;
   }
 }
+
+.bg-main {
+  background-color: #ECECEC;
+}
