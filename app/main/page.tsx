@@ -1,98 +1,79 @@
 "use client";
 
 import Image from "next/image";
-import iconeMenu from "@/app/assets/icons/icone-musicmenu.png";
-import logoGold from "@/app/assets/images/logo-gold.png";
-import iconeBag from "@/app/assets/icons/icone-bag-compra.png";
-import banner1 from "@/app/assets/images/saxophone-yamaha-banner.png";
-import banner2 from "@/app/assets/images/trompete-yamaha-banner.png";
-import banner3 from "@/app/assets/images/acessorios-banner.png";
-import banner4 from "@/app/assets/images/promo-banner.png";
-
+import iconeMenu from "@/public/assets/icons/icone-musicmenu.png";
+import logoGold from "@/public/assets/images/logo-gold.png";
+import iconeBag from "@/public/assets/icons/icone-bag-compra.png";
+import GreyCard from "../components/gray-card";
 import { Search } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import Carousel from "../components/carousel";
+import Link from "next/link";
+// import { AppSidebar } from "../components/app-sidebar";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-// import required modules
-import {
-  Autoplay,
-  Navigation,
-  Pagination,
-  Mousewheel,
-  Keyboard,
-} from "swiper/modules";
+// import ImgInstrumento from "@/app/assets/images/instruments-2.png";
 
 const Main = () => {
   const name = "";
   console.log(name);
   return (
-    <div className="bg-main h-screen w-screen">
-      <div className="flex h-[6.3rem] justify-between">
-        <div className="flex items-center ps-10">
-          <Image src={iconeMenu} alt="Icone do Menu" className="w-8"></Image>
+    <>
+      <link rel="stylesheet" href="https://use.typekit.net/ytg7ija.css"></link>
+
+      <div className="bg-main h-auto w-auto">
+        <div className="flex h-[6.3rem] justify-between">
+          <div className="flex items-center ps-10">
+            <Image src={iconeMenu} alt="Icone do Menu" className="w-8"></Image>
+          </div>
+
+          <div className="ms-10 flex items-center">
+            <Image
+              src={logoGold}
+              alt="Logo Harmonix"
+              className="h-14 w-14"
+            ></Image>
+          </div>
+          <div className="me-10 flex items-center">
+            <a href="#">
+              <Image
+                src={iconeBag}
+                alt="Logo Harmonix"
+                className="w-20"
+              ></Image>
+            </a>
+          </div>
         </div>
 
-        <div className="ms-10 flex items-center">
-          <Image
-            src={logoGold}
-            alt="Logo Harmonix"
-            className="h-14 w-14"
-          ></Image>
+        <div className="relative my-7 flex justify-center">
+          <input
+            className="font-quiche mx-auto flex w-[500px] rounded-full border border-black border-opacity-30 px-4 py-2 text-sm placeholder-[slate-500] placeholder-opacity-60 shadow-sm shadow-[#00000044] outline-gray-500"
+            type="text"
+            placeholder="Pesquise Aqui o que você procura"
+            style={{ background: "#F2F1F1" }}
+          />
+          <Link href={"#"} className="absolute top-[0.4rem] ms-[28rem] h-4">
+            <Search />
+          </Link>
         </div>
-        <div className="me-10 flex items-center">
-          <a href="#">
-            <Image src={iconeBag} alt="Logo Harmonix" className=""></Image>
-          </a>
+
+        <Carousel />
+        <div className="mt-16 flex h-[17.43rem] justify-center gap-20">
+          <GreyCard
+            imagem="/assets/images/instruments-2.png"
+            titulo="Instrumentos"
+            paragrafo="Encontre os melhores instrumentos musicais, 
+com o melhor preço e as melhores recomendações"
+          />
+          <GreyCard
+            imagem="/assets/images/brand-1.png"
+            titulo="Marcas"
+            paragrafo="Encontre as principais marcas fornecedoras 
+de instrumentos musicais do mercado"
+          />
+          {/* <div className="w-[31.25rem] rounded-[3rem] bg-card"></div>
+        <div className="w-[31.25rem] rounded-[3rem] bg-card"></div> */}
         </div>
       </div>
-
-      <div className="relative my-10 flex justify-center">
-        <input
-          className="mx-auto flex w-[500px] rounded-full border border-black px-3 py-1 placeholder-slate-500 placeholder-opacity-60 shadow-lg outline-gray-950"
-          type="text"
-          placeholder="Pesquise Aqui o que você procura"
-          style={{ background: "#F2F1F1" }}
-        />
-        <Search className="absolute top-1 ms-[28rem] h-6" />
-      </div>
-
-      <>
-        <Swiper
-          style={{
-            "--swiper-navigation-color": "#C7A315",
-            "--swiper-pagination-color": "#C7A315",
-          }}
-          cssMode={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: true,
-          }}
-          navigation={true}
-          pagination={true}
-          mousewheel={true}
-          keyboard={true}
-          modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
-          className="mySwiper rounded-[3rem] shadow-md"
-        >
-          <SwiperSlide>
-            <Image src={banner1} alt="banner 1"></Image>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image src={banner2} alt="banner 2"></Image>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image src={banner3} alt="banner 3"></Image>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image src={banner4} alt="banner 4"></Image>
-          </SwiperSlide>
-        </Swiper>
-      </>
-    </div>
+    </>
   );
 };
 
