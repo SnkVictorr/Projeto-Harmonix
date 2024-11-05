@@ -4,8 +4,8 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
-import { PanelLeft } from "lucide-react";
-
+import Image from "next/image";
+// import iconeMenu from "@/public/assets/icons/icone-musicmenu.svg";
 import { useIsMobile } from "@/app/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { Button } from "@/app/components/ui/button";
@@ -269,31 +269,160 @@ const Sidebar = React.forwardRef<
 );
 Sidebar.displayName = "Sidebar";
 
+//
+// eslint-disable-next-line react-hooks/rules-of-hooks
+
+//  //
 const SidebarTrigger = React.forwardRef<
+  React.ElementRef<typeof Button>,
+  React.ComponentProps<typeof Button>
+>(({ className, onClick, fillbtnnav, ...props }, ref) => {
+  const { toggleSidebar } = useSidebar();
+  //
+
+  return (
+    <div>
+      {
+        <Button
+          ref={ref}
+          data-sidebar="trigger"
+          variant="ghost"
+          size="icon"
+          // fill={fillbtnnav}
+          className={cn(`ms-10 mt-7 flex h-10 w-10 items-center`, className)}
+          onClick={(event) => {
+            onClick?.(event);
+            toggleSidebar();
+          }}
+          {...props}
+        >
+          <svg
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512.000000 512.000000"
+            preserveAspectRatio="xMidYMid meet"
+            style={{ width: "100%", height: "100%" }}
+          >
+            <g
+              transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+              fill={fillbtnnav}
+              stroke="none"
+              height="8.5rem"
+              width="8.5rem"
+            >
+              <path
+                d="M4380 4950 c-190 -93 -452 -222 -584 -286 -216 -106 -240 -120 -252
+-150 -12 -28 -14 -326 -14 -1849 l0 -1816 -24 -47 c-38 -73 -59 -100 -138
+-180 -366 -369 -1121 -534 -1441 -313 -244 168 -40 535 428 769 192 96 408
+154 634 170 118 8 126 10 148 36 33 39 32 104 -3 139 -34 34 -78 40 -214 27
+-562 -53 -1104 -375 -1262 -751 -103 -247 -10 -490 234 -608 139 -67 232 -85
+443 -85 155 0 197 4 305 27 511 107 934 395 1078 734 l22 52 0 1794 0 1794
+223 108 c122 60 327 159 455 221 l232 113 0 -312 0 -312 -308 -175 c-169 -96
+-319 -187 -334 -202 -63 -60 -13 -168 78 -168 16 0 164 78 382 203 265 151
+360 210 373 232 18 28 19 59 19 484 l0 453 -34 34 c-26 26 -42 34 -67 33 -23
+0 -152 -58 -379 -169z"
+              />
+              <path
+                d="M314 4289 c-25 -13 -54 -60 -54 -89 0 -29 26 -77 49 -90 13 -7 448
+-10 1323 -10 l1304 0 23 21 c50 47 50 111 -1 154 l-30 25 -1296 -1 c-851 0
+-1304 -4 -1318 -10z"
+              />
+              <path
+                d="M320 2872 c-68 -34 -78 -117 -19 -166 l31 -26 1291 0 c1007 0 1297 3
+1316 13 14 6 34 27 45 46 18 31 18 37 5 75 -28 82 80 76 -1359 76 -1194 0
+-1277 -1 -1310 -18z"
+              />
+              <path
+                d="M294 1436 c-40 -40 -44 -75 -14 -123 13 -21 31 -35 57 -42 41 -12
+1116 -16 1172 -5 65 13 101 80 76 140 -28 67 4 64 -658 64 l-599 0 -34 -34z"
+              />
+            </g>
+          </svg>
+          <span className="sr-only">Toggle Sidebar</span>
+        </Button>
+
+        // ) : (
+      }
+    </div>
+  );
+});
+SidebarTrigger.displayName = "SidebarTrigger";
+
+const CustomTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button>
 >(({ className, onClick, ...props }, ref) => {
   const { toggleSidebar } = useSidebar();
+  //
 
   return (
-    <Button
-      ref={ref}
-      data-sidebar="trigger"
-      variant="ghost"
-      size="icon"
-      className={cn("h-7 w-7", className)}
-      onClick={(event) => {
-        onClick?.(event);
-        toggleSidebar();
-      }}
-      {...props}
-    >
-      <PanelLeft />
-      <span className="sr-only">Toggle Sidebar</span>
-    </Button>
+    <div>
+      {
+        <Button
+          ref={ref}
+          data-sidebar="trigger"
+          variant="ghost"
+          size="icon"
+          className={cn("ms-10 mt-7 flex w-8 items-center", className)}
+          onClick={(event) => {
+            onClick?.(event);
+            toggleSidebar();
+          }}
+          {...props}
+        >
+          <Image
+            src="/assets/icons/de-volta.png"
+            alt="Icone do Menu que oculta a sidebar"
+            className="w-14"
+            width={56}
+            height={56}
+            quality={100}
+          ></Image>
+
+          <span className="sr-only">Toggle Sidebar</span>
+        </Button>
+
+        // ) : (
+      }
+    </div>
   );
 });
-SidebarTrigger.displayName = "SidebarTrigger";
+
+CustomTrigger.displayName = "CustomTrigger";
+
+// const bgTrigger = React.forwardRef<
+//   React.ElementRef<typeof Button>,
+//   React.ComponentProps<typeof Button>
+// >(({ className, onClick, ...props }, ref) => {
+//   const { toggleSidebar } = useSidebar();
+//   //
+
+//   return (
+//     <div>
+//       {
+//         <Button
+//           ref={ref}
+//           data-sidebar="trigger"
+//           variant="ghost"
+//           size="icon"
+//           className={cn("ms-10 mt-7 flex w-8 items-center", className)}
+//           onClick={(event) => {
+//             onClick?.(event);
+//             toggleSidebar();
+//           }}
+//           {...props}
+//         >
+//           <DarkerBackground />
+//           <span className="sr-only">Toggle Sidebar</span>
+//         </Button>
+
+//         // ) : (
+//       }
+//     </div>
+//   );
+// });
+
+// bgTrigger.displayName = "bgTrigger";
 
 const SidebarRail = React.forwardRef<
   HTMLButtonElement,
@@ -770,4 +899,6 @@ export {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
+  CustomTrigger,
+  // bgTrigger,
 };

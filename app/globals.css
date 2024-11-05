@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://use.typekit.net/ytg7ija.css");
+@import url("https://use.typekit.net/ytg7ija.css");
 
 :root {
   /* Variavel: cores padrão hsl  */
@@ -56,8 +57,13 @@
   }
 }
 
-.bg-main {
-  background-color: #ececec;
+.fixed-top {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Certifique-se de que está acima de outros elementos */
+  background-color: #ececec; /* Adicione uma cor de fundo, se necessário */
 }
 
 /* Swiper */
@@ -98,6 +104,10 @@
 
 .font-quiche {
   font-family: "quiche-sans", sans-serif;
+}
+
+.font-jeanne {
+  font-family: "jeanne-moderno-ultra", serif;
 }
 
 @layer base {
