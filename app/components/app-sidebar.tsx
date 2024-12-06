@@ -104,7 +104,7 @@ export function AppSidebar({
 
   return (
     <>
-      <SidebarProvider className="absolute" defaultOpen={false}>
+      <SidebarProvider className="absolute z-0 w-0" defaultOpen={false}>
         <Sidebar>
           <SidebarContent>
             <SidebarGroup>

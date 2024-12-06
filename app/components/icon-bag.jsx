@@ -1,6 +1,6 @@
 const IconBag = ({ colorIcon }) => {
   return (
-    <div className="z-10 mt-8">
+    <div className="mt-8">
       <a href="#">
         <svg
           version="1.0"

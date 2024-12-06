@@ -57,12 +57,14 @@ const Main = () => {
             fillbtn={`${bgBtnNav}`}
           />
           <div className="flex h-[6.3rem] items-center justify-between">
-            <div className="z-10 ms-[6rem] flex flex-grow justify-center">
-              <Image
-                src={logoGold}
-                alt="Logo Harmonix"
-                className="h-16 w-16"
-              ></Image>
+            <div className="ms-[6rem] flex flex-grow justify-center">
+              <Link href={"#"}>
+                <Image
+                  src={logoGold}
+                  alt="Logo Harmonix"
+                  className="h-16 w-16"
+                ></Image>
+              </Link>
             </div>
             <IconBag colorIcon={bgBtnNav} />
           </div>
